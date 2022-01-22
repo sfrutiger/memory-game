@@ -7,51 +7,67 @@ function App(props) {
   const [cards, setCards] = useState(
     [
       {
+        id: '0',
+        color: 'red',
+        selected: false
+      },
+      {
         id: '1',
-        color: 'red'
+        color: 'blue',
+        selected: false 
       },
       {
         id: '2',
-        color: 'blue' 
+        color: 'green',
+        selected: false 
       },
       {
         id: '3',
-        color: 'green' 
+        color: 'yellow',
+        selected: false 
       },
       {
         id: '4',
-        color: 'yellow' 
+        color: 'purple',
+        selected: false 
       },
       {
         id: '5',
-        color: 'purple' 
+        color: 'pink',
+        selected: false 
       },
       {
         id: '6',
-        color: 'pink' 
+        color: 'teal',
+        selected: false 
       },
       {
         id: '7',
-        color: 'teal' 
+        color: 'black',
+        selected: false 
       },
       {
         id: '8',
-        color: 'black' 
-      },
-      {
-        id: '9',
-        color: 'grey' 
+        color: 'grey',
+        selected: false 
       }
     ]
   )
 
-
+  function handleCardSelection(e){
+      const selectedId = parseInt(e.target.id);
+      console.log(cards[selectedId]);
+  }
 
   return (
     <div className="App">
       {props.children}
       {cards.map(function(card, index){
-        return < Card key={index} name = {card.id} color = {card.color}/>;
+        return < Card 
+        key={index}
+        id = {card.id}
+        color = {card.color} 
+        action = {handleCardSelection}/>;
       })}
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from './components/Card';
 import './styles/App.css';
 
@@ -9,58 +9,79 @@ function App(props) {
       {
         id: '0',
         color: 'red',
-        selected: false
+        selected: false,
+        position: ''
       },
       {
         id: '1',
         color: 'blue',
-        selected: false 
+        selected: false,
+        position: '' 
       },
       {
         id: '2',
         color: 'green',
-        selected: false 
+        selected: false,
+        position: '' 
       },
       {
         id: '3',
         color: 'yellow',
-        selected: false 
+        selected: false,
+        position: '' 
       },
       {
         id: '4',
         color: 'purple',
-        selected: false 
+        selected: false,
+        position: '' 
       },
       {
         id: '5',
         color: 'pink',
-        selected: false 
+        selected: false,
+        position: '' 
       },
       {
         id: '6',
         color: 'teal',
-        selected: false 
+        selected: false,
+        position: '' 
       },
       {
         id: '7',
         color: 'black',
-        selected: false 
+        selected: false,
+        position: '' 
       },
       {
         id: '8',
         color: 'grey',
-        selected: false 
+        selected: false,
+        position: ''
       }
     ]
   )
 
+  function randomizeOrder () {
+        cards.forEach(card =>
+        card.position = Math.random()
+        );
+        cards.sort(function(a,b) {return a.position - b.position})
+  }
+
+  randomizeOrder();
+
   function handleCardSelection(e){
-      const selectedId = parseInt(e.target.id);
+      randomizeOrder();
+      const selectedId = e.target.id;
       let updatedCards = [...cards];
-      let selectedCard = {...updatedCards[selectedId]};
+      const index = updatedCards.map(card => card.id).indexOf(selectedId);
+      let selectedCard = {...updatedCards[index]};
       selectedCard.color = 'white';
-      updatedCards[selectedId] = selectedCard;
+      updatedCards[index] = selectedCard;
       setCards(updatedCards);
+      console.log(cards[0].position);
   }
 
   return (

@@ -5,66 +5,68 @@ import './styles/App.css';
 
 function App(props) {
 
+  const initialCards = [
+    {
+      id: '0',
+      color: 'red',
+      selected: false,
+      position: ''
+    },
+    {
+      id: '1',
+      color: 'blue',
+      selected: false,
+      position: '' 
+    },
+    {
+      id: '2',
+      color: 'green',
+      selected: false,
+      position: '' 
+    },
+    {
+      id: '3',
+      color: 'yellow',
+      selected: false,
+      position: '' 
+    },
+    {
+      id: '4',
+      color: 'purple',
+      selected: false,
+      position: '' 
+    },
+    {
+      id: '5',
+      color: 'pink',
+      selected: false,
+      position: '' 
+    },
+    {
+      id: '6',
+      color: 'teal',
+      selected: false,
+      position: '' 
+    },
+    {
+      id: '7',
+      color: 'black',
+      selected: false,
+      position: '' 
+    },
+    {
+      id: '8',
+      color: 'grey',
+      selected: false,
+      position: ''
+    }
+  ];
+
   const [score, setScore] = useState(0);
 
-  const [cards, setCards] = useState(
-    [
-      {
-        id: '0',
-        color: 'red',
-        selected: false,
-        position: ''
-      },
-      {
-        id: '1',
-        color: 'blue',
-        selected: false,
-        position: '' 
-      },
-      {
-        id: '2',
-        color: 'green',
-        selected: false,
-        position: '' 
-      },
-      {
-        id: '3',
-        color: 'yellow',
-        selected: false,
-        position: '' 
-      },
-      {
-        id: '4',
-        color: 'purple',
-        selected: false,
-        position: '' 
-      },
-      {
-        id: '5',
-        color: 'pink',
-        selected: false,
-        position: '' 
-      },
-      {
-        id: '6',
-        color: 'teal',
-        selected: false,
-        position: '' 
-      },
-      {
-        id: '7',
-        color: 'black',
-        selected: false,
-        position: '' 
-      },
-      {
-        id: '8',
-        color: 'grey',
-        selected: false,
-        position: ''
-      }
-    ]
-  )
+  const [highScore, setHighScore] = useState(0);
+
+  const [cards, setCards] = useState(initialCards);
 
   function randomizeOrder () {
         cards.forEach(card =>
@@ -81,12 +83,19 @@ function App(props) {
       let updatedCards = [...cards];
       const index = updatedCards.map(card => card.id).indexOf(selectedId);
       let selectedCard = {...updatedCards[index]};
-      selectedCard.color = 'white';
-      selectedCard.selected = true;
-      updatedCards[index] = selectedCard;
-      setScore(score + 1);
-      setCards(updatedCards);
-      console.log(cards);
+      if (selectedCard.selected === true){
+        setCards(initialCards);
+        setScore(0);
+      } else {
+        selectedCard.color = 'white';
+        selectedCard.selected = true;
+        updatedCards[index] = selectedCard;
+        setScore(score + 1);
+        setCards(updatedCards);
+        if (highScore <= score) {
+          setHighScore(score + 1);
+        }
+      }
   }
 
   return (
@@ -99,7 +108,7 @@ function App(props) {
         color = {card.color} 
         action = {handleCardSelection}/>;
       })}
-    < Score score = {score}/>
+    < Score score = {score} highScore = {highScore}/>
     </div>
   );
 }

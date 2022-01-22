@@ -45,11 +45,13 @@ function App(props) {
     ]
   )
 
+
+
   return (
     <div className="App">
       {props.children}
       {cards.map(function(card, index){
-        return < Card key={index} name = {card.id} color = {card.color} />;
+        return < Card key={index} name = {card.id} color = {card.color}/>;
       })}
     </div>
   );

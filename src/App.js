@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Card from './components/Card';
+import Score from './components/Score';
 import './styles/App.css';
 
 function App(props) {
+
+  const [score, setScore] = useState(0);
 
   const [cards, setCards] = useState(
     [
@@ -79,9 +82,11 @@ function App(props) {
       const index = updatedCards.map(card => card.id).indexOf(selectedId);
       let selectedCard = {...updatedCards[index]};
       selectedCard.color = 'white';
+      selectedCard.selected = true;
       updatedCards[index] = selectedCard;
+      setScore(score + 1);
       setCards(updatedCards);
-      console.log(cards[0].position);
+      console.log(cards);
   }
 
   return (
@@ -94,6 +99,7 @@ function App(props) {
         color = {card.color} 
         action = {handleCardSelection}/>;
       })}
+    < Score score = {score}/>
     </div>
   );
 }

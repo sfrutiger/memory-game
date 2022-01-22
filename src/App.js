@@ -56,7 +56,11 @@ function App(props) {
 
   function handleCardSelection(e){
       const selectedId = parseInt(e.target.id);
-      console.log(cards[selectedId]);
+      let updatedCards = [...cards];
+      let selectedCard = {...updatedCards[selectedId]};
+      selectedCard.color = 'white';
+      updatedCards[selectedId] = selectedCard;
+      setCards(updatedCards);
   }
 
   return (

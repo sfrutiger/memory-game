@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/memory-game/static/css/main.f2e000fd.css",
+    "main.css": "/memory-game/static/css/main.95bfa2e5.css",
     "main.js": "/memory-game/static/js/main.c2a0720a.js",
     "index.html": "/memory-game/index.html",
-    "main.f2e000fd.css.map": "/memory-game/static/css/main.f2e000fd.css.map",
+    "main.95bfa2e5.css.map": "/memory-game/static/css/main.95bfa2e5.css.map",
     "main.c2a0720a.js.map": "/memory-game/static/js/main.c2a0720a.js.map"
   },
   "entrypoints": [
-    "static/css/main.f2e000fd.css",
+    "static/css/main.95bfa2e5.css",
     "static/js/main.c2a0720a.js"
   ]
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Card from './components/Card';
 import Score from './components/Score';
+import Instructions from './components/Instructions';
 import './styles/App.css';
 
 function App(props) {
@@ -50,7 +51,7 @@ function App(props) {
     },
     {
       id: '7',
-      color: 'black',
+      color: 'orange',
       selected: false,
       position: '' 
     },
@@ -87,7 +88,7 @@ function App(props) {
         setCards(initialCards);
         setScore(0);
       } else {
-        selectedCard.color = 'white';
+        /* selectedCard.color = 'white'; */
         selectedCard.selected = true;
         updatedCards[index] = selectedCard;
         setScore(score + 1);
@@ -101,6 +102,8 @@ function App(props) {
   return (
     <div className="App">
       {props.children}
+      < Instructions />
+      <div className="Board">
       {cards.map(function(card, index){
         return < Card 
         key={index}
@@ -108,6 +111,7 @@ function App(props) {
         color = {card.color} 
         action = {handleCardSelection}/>;
       })}
+      </div>
     < Score score = {score} highScore = {highScore}/>
     </div>
   );

@@ -7,7 +7,8 @@
     --cell-color: aqua;
     --background: rgb(30, 30, 60);
     --message-color: rgb(227, 250, 250);
-    --border-width: 2px;
+    --grid-dimension: min(25vh, 25vw);
+    --text-size: min(2vh, 15px);
 }
 
 body{
@@ -15,44 +16,41 @@ body{
 }
 
 .App{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     height: 100vh;
     width: 100vw;
-    position: relative;
+    background-color: var(--background);
 }
 
 .Board {
-    height: 100%;
-    width: 100%;
-    background-color: var(--background);
-    display: grid;
     justify-content: center;
-    align-content: center;
-    grid-template-columns: repeat(3, 20vh);
-    grid-template-rows: repeat(3, 20vh);
+    display: grid;
+    grid-template-columns: repeat(3, var(--grid-dimension));
+    grid-template-rows: repeat(3, var(--grid-dimension));
 }
 
 .Instructions{
-    font-size: 2vh;
+    font-size: var(--text-size);
     width: 100%;
-    height: 20vh;
     color: var(--message-color);
-    position: absolute;
-    top: 8vh;
     text-align: center;
 }
 
+.Instructions > h1 {
+    max-height: 100%;
+}
+
 .Card{
-    height: 17vh;
-    width: 17vh;
+    height: 85%;
+    width: 85%;
     cursor: pointer;
 }
 
 .Score {
-    font-size: 2vh;
+    font-size: var(--text-size);
     width: 100%;
-    height: 20vh;
     color: var(--message-color);
-    position: absolute;
-    bottom: 1vh;
     text-align: center;
 }
